@@ -1,40 +1,58 @@
 <template>
-  <Menu />
-  <router-view />
+  <main class="columns is-gapless is-multiline">
+    <div class="column is-one-quarter" v-if="estaLogado">
+      <BarraLateral />
+    </div>
+    <div class="column is-three-quarter conteudo">
+      <Notificacoes />
+      <router-view />
+    </div>
+  </main>
 </template>
 
 <script lang="ts">
-import Menu from './components/Menu.vue';
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
+import BarraLateral from '@/components/BarraLateral.vue';
+import Notificacoes from '@/components/Notificacoes.vue';
+import { useStore } from '@/store';
 
 export default defineComponent({
   name: 'ViewPrincipal',
   components: {
-    Menu
+    BarraLateral,
+    Notificacoes
   },
+
+  setup() {
+
+    const store = useStore();
+
+    const estaLogado = computed(() => store.getters.usuarioLogado);
+    
+    return {
+      estaLogado
+    }
+  }
 })
 
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.lista {
+  padding: 1.25rem;
 }
 
-nav {
-  padding: 30px;
+main {
+  --bg-primario: #fff;
+  --texto-primario: #000;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+main.modo-escuro {
+  --bg-primario: #2b2d42;
+  --texto-primario: #ddd;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.conteudo {
+  background-color: var(--bg-primario);
 }
 </style>

@@ -1,17 +1,44 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import Login from '@/views/Login.vue';
+import Anotacao from '@/views/anotacao/Anotacao.vue';
+import Anotacoes from '@/views/Anotacoes.vue';
+import Lista from '@/views/anotacao/Lista.vue';
 
-export const routes: Array<RouteRecordRaw> = [
+export const rotas: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'Home',
-    component: HomeView
+    name: 'Login',
+    component: Login
   },
-]
+  {
+    path: '/anotacoes',
+    name: 'Anotacoes',
+    component: Anotacoes,
+    children: [
+      {
+        path: '',
+        name: 'Lista',
+        component: Lista
+      },
+      {
+        path: 'novo',
+        name: 'Anotacoes Cadastrar',
+        component: Anotacao,
+        props: true
+      },
+      {
+        path: ':id',
+        name: 'Anotacoes Editar',
+        component: Anotacao,
+        props: true
+      },
+    ]
+  }
+];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  history: createWebHashHistory(),
+  routes: rotas
+});
 
-export default router
+export default router;

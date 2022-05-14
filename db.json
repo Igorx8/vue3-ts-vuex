@@ -1,0 +1,23 @@
+{
+  "login": {
+    "accessToken": "token123Autorizacao456ParaLogar"
+  },
+  "anotacoes": [
+    {
+      "id": "2022-05-14T19:34:54.723Z",
+      "descricao": "awdawd2a"
+    },
+    {
+      "id": "2022-05-14T19:35:39.018Z",
+      "descricao": "aaa"
+    },
+    {
+      "id": "2022-05-14T19:35:43.154Z",
+      "descricao": "aaa"
+    },
+    {
+      "id": "2022-05-14T19:35:44.410Z",
+      "descricao": "aaa"
+    }
+  ]
+}
