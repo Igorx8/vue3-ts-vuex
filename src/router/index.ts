@@ -8,7 +8,10 @@ export const rotas: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      public: true,
+    }
   },
   {
     path: '/anotacoes',
@@ -18,19 +21,28 @@ export const rotas: RouteRecordRaw[] = [
       {
         path: '',
         name: 'Lista',
-        component: Lista
+        component: Lista,
+        meta: {
+          public: false,
+        },
       },
       {
         path: 'novo',
         name: 'Anotacoes Cadastrar',
         component: Anotacao,
-        props: true
+        meta: {
+          public: false,
+        },
+        
       },
       {
         path: ':id',
         name: 'Anotacoes Editar',
         component: Anotacao,
-        props: true
+        props: true,
+        meta: {
+          public: false,
+        },
       },
     ]
   }

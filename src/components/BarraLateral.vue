@@ -5,7 +5,7 @@
     </h3>
     <nav class="panel mt-5">
       <ul>
-        <li style="color: #42b983"> <button class="button" @click="logout">Logout </button>  </li>
+        <li style="color: #42b983"> <button class="button" @click="logout">Logout </button> </li>
         <li>
           <router-link v-for="route in rotas" :to="route.path" :key="route.component">
             <br />
@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { rotas } from '@/router';
 import { useStore } from '@/store';
 import { DESLOGAR_USUARIO } from '@/store/tipo-mutacoes';
@@ -26,11 +26,15 @@ export default defineComponent({
   name: 'BarraLateral',
   data() {
     return {
-      rotas: rotas
+      rotas: computed(() => rotas.filter(r => {
+        if (r.meta) {
+          return r.meta.public === false
+        }
+      }))
     }
   },
 
-  setup(){
+  setup() {
     const store = useStore();
 
     const logout = (): void => {
@@ -52,6 +56,7 @@ header {
   height: 100vh;
   text-align: center;
 }
+
 @media only screen and (max-width: 768px) {
   header {
     padding: 2.5rem;

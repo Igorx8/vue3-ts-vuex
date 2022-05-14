@@ -57,6 +57,8 @@ export default defineComponent({
 
         store.dispatch(CARREGAR_ANOTACOES);
 
+        const anotacoes =computed(() => store.state.anotacao.anotacoes)
+
         const excluir = (id: string) => {
             store.dispatch(DELETAR_ANOTACAO, id);
             store.commit(NOTIFICAR, {
@@ -67,7 +69,7 @@ export default defineComponent({
         }
         
         return {
-            anotacoes: computed(() => store.state.anotacao.anotacoes),
+            anotacoes,
             store,
             excluir
         }
