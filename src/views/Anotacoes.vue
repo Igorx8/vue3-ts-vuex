@@ -1,7 +1,7 @@
 <template>
   <div class="anotacoes">
     <h1 class="title">Anotações</h1>
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
@@ -9,8 +9,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Anotacoes',
+  name: 'AnotacoesLista',
 });
 </script>
 
