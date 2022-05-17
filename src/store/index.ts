@@ -6,7 +6,7 @@ import { DEFINE_USUARIO_LOGADO, DESLOGAR_USUARIO, NOTIFICAR } from "./tipo-mutac
 import http from '@/http'
 import router from '@/router'
 import { IUsuario } from '@/interfaces/IUsuario';
-import { anotacaoModulo, EstadoAnotacao } from './anotacao';
+import { anotacao, EstadoAnotacao } from './anotacao';
 
 export interface Estado {
   token: string | null,
@@ -87,7 +87,7 @@ export const store = createStore<Estado>({
   },
 
   modules: {
-    anotacaoModulo
+    anotacao
   }
 })
 
